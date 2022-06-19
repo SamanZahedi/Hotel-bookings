@@ -2,4 +2,4 @@
 
 ## Hello team!
 
-### please fork the repo and make your changes in your own branch and them make a pull request.
+### please fork the repo and make your changes in your own branch and then make a pull request.
