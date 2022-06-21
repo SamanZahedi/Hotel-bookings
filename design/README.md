@@ -1,4 +1,5 @@
-**Create Table Customers
+# Getting Started to design HOTEL BOOKINGS project
+## Create Table Customers
 Basically, this script will create Customers table on sql.
 ```sql
 Create Table customers (
