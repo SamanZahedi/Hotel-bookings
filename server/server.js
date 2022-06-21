@@ -176,47 +176,6 @@ app.post("/customers", (req, res) => {
     });
 });
 
-// app.put('/customers/:customerId', (req, res) => {
-//   const customerId = req.params.customerId
-//   const customerEmail = req.body.email
-//   const customerName = req.body.name
-//   const customerCity = req.body.city
-//   const customerPostcode = req.body.postcode
-//   const customerAddress = req.body.address
-//   const customerCountry = req.body.country
-
-//   const params = []
-
-//   [req.body].map(p => {if(p) console.log(p[0])})
-//   // console.log(req.body.name)
-//   const selectQuery = `select * from customers where id = $1`
-//   // const updateQuery = `Update customers set
-//                         // ${customerEmail&&` email = $1`}
-//                         // ${customerName&&`name = $2`}
-//                         // ${customerAddress&&` a = $3`}
-//                         // ${customerEmail&&`email = $4`}
-//                         // where id = $2`
-//   const updateQuery = `Update customers set email = $1 where id = $2`
-
-//   pool.query(selectQuery, [customerId]).then((result) => {
-//     if (result.rows == 0) res.status(400).send("Customer doesn't exist!")
-//     else {
-//       if (!customerEmail.includes('@') || !customerEmail.includes('.'))
-//         res.status(400).send('The email address is not valid!')
-//       else
-//         pool
-//           .query(updateQuery, [customerEmail, customerId])
-//           .then(() =>
-//             res.status(200).send(`Customer ${customerId} has been updated!`),
-//           )
-//           .catch((error) => {
-//             console.log(error)
-//             res.status(500).json(error)
-//           })
-//     }
-//   })
-// })
-
 app.get("/hotels", function (req, res) {
   pool
     .query("SELECT * FROM hotels")
@@ -266,6 +225,20 @@ app.post("/hotels", (req, res) => {
       }
     });
 });
+
+app.put('/customers/:customerId', (req, res) => {
+  const id = req.params.customerId;
+  const {email} = req.body
+  const queryString = `Update customers Set email=${email} where id = ${id}`
+
+  pool
+  .query(queryString)
+  .then(() => res.status(200).send('Customer updated!'))
+  .catch(error => {
+    console.error(error);
+    res.status(500).json(error);
+  })
+})
 
 app.listen(3005, function () {
   console.log("Server is listening on port 3005. Ready to accept requests!");
