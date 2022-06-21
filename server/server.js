@@ -49,3 +49,15 @@ app.get('/customers/:id', (req, res) => {
       res.status(500).json(error)
     })
 })
+
+app.post('/customers', (req, res) => {
+  const { name, email, address, phone } = req.body
+  const queryString = `Insert Into customers (name, email, address, phone) values ($1, $2, $3, $4)`
+  pool
+    .query(queryString, [name, email, address, phone])
+    .then((result) => res.json(result.rows))
+    .catch((error) => {
+      console.error(error)
+      res.status(500).json(error)
+    })
+})
