@@ -11,6 +11,7 @@ nav {
 display: flex;
 justify-content: space-between;
 align-items: center;
+Width: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
