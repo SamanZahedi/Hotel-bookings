@@ -14,13 +14,26 @@ const pool = new Pool({
   port: 5432,
 })
 
-const port = process.env.port || 3005
+const port = process.env.PORT || 3005
 
 app.listen(port, function () {
-  console.log('Server is listening on port 3005. Ready to accept requests!')
+  console.log(`Server is listening on port ${port}. Ready to accept requests!`)
 })
 
 // hotels
+
+
+app.get("/", function (req, res) {
+  pool
+    .query("SELECT * FROM hotels")
+    .then((result) => res.json(result.rows))
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json(error);
+    });
+});
+
+
 app.get('/hotels', function (req, res) {
   pool
     .query('SELECT * FROM hotels')
@@ -56,6 +69,8 @@ app.post('/hotels', function (req, res) {
       res.status(500).json(error)
     })
 })
+
+
 
 app.get('/hotels/:hotelId', function (req, res) {
   const hotelId = req.params.hotelId
@@ -106,6 +121,8 @@ app.put('/hotel/:hotelId', function (req, res) {
 
 app.delete('/hotel/:hotelId', function (req, res) {
   const hotelId = req.params.hotelId
+
+  
 
   pool
     .query('DELETE FROM bookings WHERE hotel_id=$1', [hotelId])
@@ -183,55 +200,10 @@ app.post('/customers', (req, res) => {
     })
 })
 
-app.get('/hotels', function (req, res) {
-  pool
-    .query('SELECT * FROM hotels')
-    .then((result) => res.json(result.rows))
-    .catch((error) => {
-      console.error(error)
-      res.status(500).json(error)
-    })
-})
 
-app.get('/hotels/:hotelId', (req, res) => {
-  const id = req.params.hotelId
-  pool
-    .query(`select * from hotels where id = $1`, [id])
-    .then((result) => res.json(result.rows))
-    .catch((error) => {
-      console.log(error)
-      res.status(500).json(error)
-    })
-})
 
-app.post('/hotels', (req, res) => {
-  const hotelName = req.body.name
-  const hotelRooms = req.body.rooms
-  const hotelPostcode = req.body.postcode
 
-  if (!Number.isInteger(hotelRoomshotelRooms) || hotelRooms <= 0) {
-    return res
-      .status(400)
-      .send('The number of rooms should be a positive integer.')
-  }
-  pool
-    .query(`Select * from hotels where name=$1`, [hotelName])
-    .then((result) => {
-      if (result.rows.length > 0)
-        res.status(400).send('There is a hotel with this same name!')
-      else {
-        const queryString =
-          'Insert Into hotels (name, rooms, postcode) values ($1, $2, $3)'
-        pool
-          .query(queryString, [hotelName, hotelRooms, hotelPostcode])
-          .then(() => res.send('Hotel created!'))
-          .catch((error) => {
-            console.log(error)
-            res.status(500).json(error)
-          })
-      }
-    })
-})
+
 
 app.put('/customers/:customerId', (req, res) => {
   const id = req.params.customerId
