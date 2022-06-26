@@ -6,13 +6,21 @@ const cors = require("cors")
 app.use(express.json())
 app.use(cors())
 
+// const pool = new Pool({
+//   user: 'cyf24',
+//   host: 'database-1.c7jkbbjyxtpj.us-east-1.rds.amazonaws.com',
+//   database: 'cyf24',
+//   password: 'uSLCnmUH',
+//   port: 5432,
+// })
+
 const pool = new Pool({
-  user: 'cyf24',
-  host: 'database-1.c7jkbbjyxtpj.us-east-1.rds.amazonaws.com',
-  database: 'cyf24',
-  password: 'uSLCnmUH',
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl:{
+    rejectUnauthorized: false
+  }
 })
+
 
 const port = process.env.PORT || 3005
 
