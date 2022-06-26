@@ -7,17 +7,28 @@ app.use(express.json())
 app.use(cors())
 
 const pool = new Pool({
-  user: 'cyf24',
-  host: 'database-1.c7jkbbjyxtpj.us-east-1.rds.amazonaws.com',
-  database: 'cyf24',
-  password: 'uSLCnmUH',
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 })
 
-const port = process.env.port || 3005
+const port = process.env.PORT || 8080
+
+
 
 app.listen(port, function () {
-  console.log('Server is listening on port 3005. Ready to accept requests!')
+  console.log(`Server is listening on port ${port}. Ready to accept requests!`)
+})
+
+app.get('/', function (req, res) {
+  pool
+    .query('SELECT * FROM hotels')
+    .then((result) => res.json(result.rows))
+    .catch((error) => {
+      console.error(error)
+      res.status(500).json(error)
+    })
 })
 
 // hotels

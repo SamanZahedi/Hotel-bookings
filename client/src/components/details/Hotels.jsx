@@ -19,10 +19,9 @@ const Hotels = () => {
        const [hotels, setHotels] = useState([]);
   // console.log(hotels);
   axios
-    .get("http://localhost:3005/hotels")
+    .get("https://hotels-bookings.herokuapp.com/hotels")
     .then((res) => setHotels(res.data));
   return (
-    // <div>{hotels}</div>
     <div>
       {hotels.map((hotel) => (
         <div key={hotel.id}>
