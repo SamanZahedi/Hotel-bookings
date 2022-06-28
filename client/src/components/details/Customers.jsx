@@ -60,8 +60,9 @@ const Customers = () => {
       </nav>
       <div className='content'>
         {customers.map((customer) => {
+          const imgAlt = `Customer ${customer.id} Picture`  
           return <div className='card-row'>
-            <img src='./person.png'/>
+            <img src='./person.png' alt={imgAlt}/>
             {customer.name}</div>
         })}
       </div>
