@@ -33,7 +33,7 @@ const AddCustomer = ({ allData, handleSet, loadData }) => {
         Add Customer
       </button>
       <form
-        className={toggle ? 'display-flex' : 'display-none'}
+        className={toggle ? 'd-flex' : 'd-none'}
         onSubmit={handleSubmitEvent}
       >
           {/* <SearchYoutube searchHandler = {searchHandler}/>  */}
