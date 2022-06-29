@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import "../../css/sort.css";
 
 const Sort = ({ sortHandler }) => {
   const [state, setState] = useState(false)
@@ -23,7 +24,7 @@ const Sort = ({ sortHandler }) => {
       </select>
 
       <div className="asc">
-        {state ? 'Ascending' : 'Descending'}
+        <div className="asc-caption">{state ? 'Ascending' : 'Descending'}</div>
         <label className="switch">
           <input type="checkbox" />
           <span className="slider round" onClick={toggle}></span>
