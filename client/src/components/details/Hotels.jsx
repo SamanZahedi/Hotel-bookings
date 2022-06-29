@@ -1,28 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Hotels = () => {
-//   const [name, setName] = useState("Saman");
-//   const handleClick = () => {
-//     setName("Mario");
-//   };
-
-//   return (
-//     <div>
-//       <h2>homepage</h2>
-//       <p>{name}</p>
-//       <button onClick={handleClick}>Click</button>
-//     </div>
-//   );
-// };
-
-       const [hotels, setHotels] = useState([]);
-  // console.log(hotels);
-  axios
-    .get("http://localhost:3005/hotels")
+ const [hotels, setHotels] = useState([]);
+ useEffect(()=> {
+ axios
+    .get("https://hotels-bookings.herokuapp.com/hotels")
     .then((res) => setHotels(res.data));
+ },[]) 
   return (
-    // <div>{hotels}</div>
     <div>
       {hotels.map((hotel) => (
         <div key={hotel.id}>

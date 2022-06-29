@@ -1,0 +1,284 @@
+:root {
+  --first-color: #0B2559;
+  --second-color: #183B59;
+  --third-color: #2A5159;
+  --forth-color: #327355;
+  --fifth-color: #5C8C46;
+  --sixth-color: #a7a7aa;
+}
+
+.App {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.root {
+  display: flex;
+  width: 96%;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+.main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  font-size: large;
+  background-color: var(--second-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.main-menu ul {
+  overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu li {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main-menu li:hover {
+  color: cornflowerblue;
+}
+
+.btn-add {
+  background-color: var(--second-color);
+  color: #fff;
+}
+
+.btn-add:hover {
+  background-color: var(--third-color);
+  color: var(--fifth-color);
+}
+
+select {
+  border: var(--second-color) solid 1px;
+  color: var(--first-color);
+  padding: 6px;
+  border-radius: 5px;
+}
+
+.search {
+  width: 100%;
+}
+
+.search input {
+  border-color: var(--second-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 40px;
+  margin-top: 100px;
+  color: var(--first-color);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  row-gap: 8px;
+  color: var(--second-color);
+  margin-top: 20px;
+}
+
+.content img {
+  border-radius: 50%;
+  width: 120px;
+  /* border: #14014a 1px solid; */
+  box-shadow: rgb(94, 94, 94) 4px 4px 10px;
+}
+
+.card {
+  display: flex;
+  width: 32%;
+  align-items: center;
+  text-align: center;
+  border: var(--first-color) solid;
+}
+
+.card-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  border: var(--first-color) solid;
+  padding: 20px;
+  border-radius: 5px;
+  column-gap: 20px;
+}
+
+.id {
+  margin: 0;
+  width: 100%;
+  background-color: var(--first-color);
+  color: #ffff;
+}
+
+header {
+  width: 100%;
+  margin: 40px;
+  text-align: center;
+}
+
+header img {
+  width: 100%;
+  height: 300px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+h3 {
+  word-wrap: normal;
+}
+
+.bottom-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 14px;
+}
+
+.bottom-panel button {
+  color: #ffff;
+  background-color: var(--second-color);
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.like {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+}
+
+.title {
+  min-height: 90px;
+  background-color: var(--third-color);
+  width: 100%;
+
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 4px;
+}
+
+iframe {
+  width: 100%;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+  align-items: flex-end;
+  column-gap: 20px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--second-color);
+  color: #fff;
+  margin-top: 40px;
+  height: 50px;
+}
+
+.error {
+  color: #ff0000;
+}
+
+.move-top {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  box-shadow: #424242 6px 6px 8px;
+}
+
+@media screen and (max-width:860px) {
+  .root {
+    flex-direction: column;
+    width: auto;
+    max-width: 50%;
+  }
+
+  main {
+    margin-top: 10%;
+  }
+
+  .card {
+    width: 96%;
+  }
+
+  nav {
+    width: 100%;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  nav button {
+    width: 100%;
+  }
+
+  .main-menu {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+
+
+}
