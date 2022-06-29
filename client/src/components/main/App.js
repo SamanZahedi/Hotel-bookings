@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import Customers from '../details/Customers'
 import Bookings from '../details/Bookings'
-import '../../css/App.css'
 import Hotels from '../details/Hotels'
 import HamburgerMenu from '../details/HamburgerMenu'
+import '../../css/App.css'
 
 function App() {
   const [detail, setDetail] = useState(<Customers />)
   return (
     <div>
       <div className="hamburger-menu">
-        <HamburgerMenu />
+        <HamburgerMenu setDetail={setDetail}/>
       </div>
       <nav className="main-menu">
         <ul>
