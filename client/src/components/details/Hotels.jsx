@@ -50,15 +50,15 @@ const Hotels = () => {
         {hotels.map((hotel) => (
           <div key={hotel.id} className="card-row">
             <div key={hotel.id}>
-              <h3>Hotel name: </h3>
+              <h3>Hotel name:</h3>
               <span>{hotel.name}</span>
             </div>
             <div>
               <h4>Postcode: {hotel.postcode}</h4>
               <h5>Number of rooms: {hotel.rooms}</h5>
-              <div>
-                <button onClick={() => deleteHandler(hotel.id)}>Delete</button>
-              </div>
+            </div>
+            <div>
+              <button onClick={() => deleteHandler(hotel.id)}>Delete</button>
             </div>
           </div>
         ))}
