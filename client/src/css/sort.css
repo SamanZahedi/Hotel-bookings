@@ -65,7 +65,7 @@ input:checked+.slider {
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #f321aa;
+    box-shadow: 0 0 1px var(--second-color)
 }
 
 input:checked+.slider:before {

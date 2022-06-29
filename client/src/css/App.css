@@ -2,7 +2,7 @@
   --first-color: #0B2559;
   --second-color: #183B59;
   --third-color: #2A5159;
-  --forth-color: #327355;
+  --fourth-color: #327355;
   --fifth-color: #5C8C46;
   --sixth-color: #a7a7aa;
 }
@@ -255,7 +255,7 @@ footer {
   }
 
   main {
-    margin-top: 10%;
+    margin-top: 70px;
   }
 
   .card {

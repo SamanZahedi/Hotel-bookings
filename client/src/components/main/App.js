@@ -6,7 +6,7 @@ import HamburgerMenu from '../details/HamburgerMenu'
 import '../../css/App.css'
 
 function App() {
-  const [detail, setDetail] = useState(<Customers />)
+  const [detail, setDetail] = useState(<Hotels />)
   return (
     <div>
       <div className="hamburger-menu">

@@ -3,24 +3,25 @@ html {
     font-family: Arial;
 }
 
-header {
+/* header {
     border-bottom: 1px solid #eee;
     height: 4rem;
-}
+} */
 
-.burger-wrapper {
+/* .burger-wrapper {
     cursor: pointer;
-}
-.main {
-    background-color: var(--second-color);
-}
+} */
+
+/* .main {
+    background-color: var(--fifth-color);
+} */
 
 .main ul {
     overflow: hidden;
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
+} 
 
 .main li {
     display: inline-block;
@@ -32,9 +33,8 @@ header {
 }
 
 .main li:hover {
-    color: cornflowerblue;
+    color: var(--fourth-color);
 }
-
 
 #ham-menu {
     background: var(--second-color);
@@ -56,11 +56,14 @@ header {
     font-size: 32px;
 }
 
-#menyAvPaa {
+#menuCheckbox {
     display: none;
 }
+#liHotel:hover~#ham-menu {
+    transform: translateX(50rem);
+}
 
-#menyAvPaa:checked~#ham-menu {
+#menuCheckbox:checked~#ham-menu {
     transform: translateX(0rem);
 }
 
@@ -77,24 +80,23 @@ header {
 }
 
 #burger>div {
-    height: 2px;
-    background-color: #000;
+    height: 4px;
+    background-color: var(--first-color);
     transition: 0.5s;
     z-index: 999;
 }
-
-#menyAvPaa:checked~#burger>div {
+#menuCheckbox:checked~#burger>div {
     background-color: #fff;
 }
 
-#menyAvPaa:checked~#burger>div:nth-child(1) {
-    transform: translateY(15px) rotate(45deg);
+#menuCheckbox:checked~#burger>div:nth-child(1) {
+    transform: translateY(14px) rotate(45deg);
 }
 
-#menyAvPaa:checked~#burger>div:nth-child(2) {
+#menuCheckbox:checked~#burger>div:nth-child(2) {
     opacity: 0;
 }
 
-#menyAvPaa:checked~#burger>div:nth-child(3) {
-    transform: translateY(-15px) rotate(-45deg);
+#menuCheckbox:checked~#burger>div:nth-child(3) {
+    transform: translateY(-14px) rotate(-45deg);
 }
