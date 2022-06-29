@@ -56,7 +56,9 @@ const Hotels = () => {
             <div>
               <h4>Postcode: {hotel.postcode}</h4>
               <h5>Number of rooms: {hotel.rooms}</h5>
-              <button onClick={() => deleteHandler(hotel.id)}>Delete</button>
+              <div>
+                <button onClick={() => deleteHandler(hotel.id)}>Delete</button>
+              </div>
             </div>
           </div>
         ))}
