@@ -43,7 +43,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(195, 184, 184);
+    background-color: var(--sixth-color);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -61,7 +61,7 @@
 }
 
 input:checked+.slider {
-    background-color: var(--first-color);
+    background-color: var(--fifth-color);
 }
 
 input:focus+.slider {

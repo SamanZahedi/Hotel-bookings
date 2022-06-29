@@ -1,8 +1,10 @@
 :root {
-  --first-color: #aaadf6;
-  --second-color: #14014a;
-  --third-color: #bfc2e2;
-    --forth-color: #313777;
+  --first-color: #0B2559;
+  --second-color: #183B59;
+  --third-color: #2A5159;
+  --forth-color: #327355;
+  --fifth-color: #5C8C46;
+  --sixth-color: #a7a7aa;
 }
 
 .App {
@@ -58,8 +60,29 @@
   color: cornflowerblue;
 }
 
+.btn-add {
+  background-color: var(--second-color);
+  color: #fff;
+}
+
+.btn-add:hover {
+  background-color: var(--third-color);
+  color: var(--fifth-color);
+}
+
+select {
+  border: var(--second-color) solid 1px;
+  color: var(--first-color);
+  padding: 6px;
+  border-radius: 5px;
+}
+
 .search {
   width: 100%;
+}
+
+.search input {
+  border-color: var(--second-color);
 }
 
 main {
@@ -175,11 +198,6 @@ iframe {
   width: 100%;
 }
 
-.btn-primary {
-  background-color: var(--forth-color);
-  color: #fff;
-}
-
 img:hover {
   cursor: pointer;
 }
@@ -229,12 +247,6 @@ footer {
   box-shadow: #424242 6px 6px 8px;
 }
 
-select {
-  border: var(--second-color) solid 1px;
-  padding: 6px;
-  border-radius: 5px;
-}
-
 @media screen and (max-width:860px) {
   .root {
     flex-direction: column;
@@ -255,6 +267,7 @@ select {
     flex-direction: column;
     row-gap: 10px;
   }
+
   nav button {
     width: 100%;
   }
