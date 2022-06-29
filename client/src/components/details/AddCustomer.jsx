@@ -29,7 +29,7 @@ const AddCustomer = ({ allData, handleSet, loadData }) => {
 
   return (
     <>
-      <button className="btn btn-success mr-auto" onClick={handleAdd}>
+      <button className="btn btn-primary mr-auto" onClick={handleAdd}>
         Add Customer
       </button>
       <form

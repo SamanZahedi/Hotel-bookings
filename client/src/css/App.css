@@ -2,6 +2,7 @@
   --first-color: #aaadf6;
   --second-color: #14014a;
   --third-color: #bfc2e2;
+    --forth-color: #313777;
 }
 
 .App {
@@ -55,6 +56,10 @@
 
 .main-menu li:hover {
   color: cornflowerblue;
+}
+
+.search {
+  width: 100%;
 }
 
 main {
@@ -170,8 +175,8 @@ iframe {
   width: 100%;
 }
 
-.btn-success {
-  background-color: #00620a;
+.btn-primary {
+  background-color: var(--forth-color);
   color: #fff;
 }
 
@@ -225,7 +230,7 @@ footer {
 }
 
 select {
-  border: rgb(255, 0, 0) solid 1px;
+  border: var(--second-color) solid 1px;
   padding: 6px;
   border-radius: 5px;
 }
