@@ -1,17 +1,30 @@
-import React, { useState } from "react";
-import Customers from "../details/Customers";
-import Bookings from "../details/Bookings";
-import "../../App.css";
-import Hotels from "../details/Hotels";
+import React, { useState } from 'react'
+import Customers from '../details/Customers'
+import Bookings from '../details/Bookings'
+import Hotels from '../details/Hotels'
+import HamburgerMenu from '../details/HamburgerMenu'
+import '../../css/App.css'
 
 function App() {
-  return(
+  const [detail, setDetail] = useState(<Customers />)
+  return (
     <div>
-     <Hotels />
-     <Bookings />
-     <Customers />
-   </div>
-  ) 
-};
+      <div className="hamburger-menu">
+        <HamburgerMenu setDetail={setDetail}/>
+      </div>
+      <nav className="main-menu">
+        <ul>
+          <li onClick={() => setDetail(<Hotels />)}>Hotels</li>
+          <li onClick={() => setDetail(<Customers />)}>Customers</li>
+          <li onClick={() => setDetail(<Bookings />)}>Bookings</li>
+        </ul>
+      </nav>
+      <main>{detail}</main>
+      <footer>
+        This is footer.
+      </footer>
+    </div>
+  )
+}
 
-export default App;
+export default App
