@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-const path = 'https://hotels-bookings.herokuapp.com/'
+const path = 'https://hotels-bookings.herokuapp.com/customers'
 
 const AddCustomer = ({ allData, handleSet, loadData }) => {
   const [toggle, setToggle] = useState(false)
@@ -33,7 +33,7 @@ const AddCustomer = ({ allData, handleSet, loadData }) => {
         Add Customer
       </button>
       <form
-        className={toggle ? 'display-flex' : 'display-none'}
+        className={toggle ? 'd-flex' : 'd-none'}
         onSubmit={handleSubmitEvent}
       >
           {/* <SearchYoutube searchHandler = {searchHandler}/>  */}
