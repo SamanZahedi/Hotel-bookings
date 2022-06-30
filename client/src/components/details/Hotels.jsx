@@ -28,9 +28,10 @@ const Hotels = () => {
   }, []);
 
   const deleteHandler = (id) => {
+    console.log(id);
     axios
       .delete(`https://hotels-bookings.herokuapp.com/hotels/${id}`)
-      .then((res) => {
+      .then(() => {
         loadData();
       });
   };
@@ -58,7 +59,12 @@ const Hotels = () => {
               <h5>Number of rooms: {hotel.rooms}</h5>
             </div>
             <div>
-              <button onClick={() => deleteHandler(hotel.id)}>Delete</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteHandler(hotel.id)}
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}

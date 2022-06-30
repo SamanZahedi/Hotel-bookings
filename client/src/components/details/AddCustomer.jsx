@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-const path = 'https://hotels-bookings.herokuapp.com/'
+const path = 'https://hotels-bookings.herokuapp.com/customers'
 
 const AddCustomer = ({ allData, handleSet, loadData }) => {
   const [toggle, setToggle] = useState(false)
