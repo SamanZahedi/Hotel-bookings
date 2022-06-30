@@ -113,7 +113,7 @@ app.put('/hotel/:hotelId', function (req, res) {
     })
 })
 
-app.delete('/hotel/:hotelId', function (req, res) {
+app.delete('/hotels/:hotelId', function (req, res) {
   const hotelId = req.params.hotelId
 
   pool
