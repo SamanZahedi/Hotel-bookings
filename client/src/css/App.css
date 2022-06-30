@@ -67,15 +67,9 @@
 
 .btn-add:hover {
   background-color: var(--third-color);
-  color: var(--fifth-color);
+  color: #fff;
 }
 
-select {
-  border: var(--second-color) solid 1px;
-  color: var(--first-color);
-  padding: 6px;
-  border-radius: 5px;
-}
 
 .search {
   width: 100%;
@@ -110,7 +104,6 @@ main {
 .content img {
   border-radius: 50%;
   width: 120px;
-  /* border: #14014a 1px solid; */
   box-shadow: rgb(94, 94, 94) 4px 4px 10px;
 }
 
