@@ -40,32 +40,6 @@ app.get('/hotels', function (req, res) {
     })
 })
 
-app.post('/hotels', function (req, res) {
-  const newHotelName = req.body.name
-  const newHotelRooms = req.body.rooms
-  const newHotelPostcode = req.body.postcode
-
-  if (!Number.isInteger(newHotelRooms) || newHotelRooms <= 0) {
-    return res
-      .status(400)
-      .send('The number of rooms should be a positive integer.')
-  }
-
-  if (!newHotelName.length > 0) {
-    return res.status(400).send('The name of hotel should be a string.')
-  }
-
-  const query = 'INSERT INTO hotels (name, rooms, postcode) VALUES ($1, $2, $3)'
-
-  pool
-    .query(query, [newHotelName, newHotelRooms, newHotelPostcode])
-    .then(() => res.send('Hotel created!'))
-    .catch((error) => {
-      console.error(error)
-      res.status(500).json(error)
-    })
-})
-
 app.get('/hotels/:hotelId', function (req, res) {
   const hotelId = req.params.hotelId
 
@@ -96,7 +70,33 @@ app.get('/search', function (req, res) {
     })
 })
 
-app.put('/hotel/:hotelId', function (req, res) {
+app.post('/hotels', function (req, res) {
+  const newHotelName = req.body.name
+  const newHotelRooms = req.body.rooms
+  const newHotelPostcode = req.body.postcode
+
+  if (!Number.isInteger(newHotelRooms) || newHotelRooms <= 0) {
+    return res
+      .status(400)
+      .send('The number of rooms should be a positive integer.')
+  }
+
+  if (!newHotelName.length > 0) {
+    return res.status(400).send('The name of hotel should be a string.')
+  }
+
+  const query = 'INSERT INTO hotels (name, rooms, postcode) VALUES ($1, $2, $3)'
+
+  pool
+    .query(query, [newHotelName, newHotelRooms, newHotelPostcode])
+    .then(() => res.send('Hotel created!'))
+    .catch((error) => {
+      console.error(error)
+      res.status(500).json(error)
+    })
+})
+
+app.put('/hotels/:hotelId', function (req, res) {
   const hotelId = req.params.hotelId
   const newName = req.body.name
 
@@ -127,7 +127,6 @@ app.delete('/hotels/:hotelId', function (req, res) {
 })
 
 // customers
-
 app.get('/customers', function (req, res) {
   pool
     .query('SELECT * FROM customers ORDER BY name')
@@ -189,56 +188,6 @@ app.post('/customers', (req, res) => {
     .catch((error) => {
       console.log(error)
       res.status(400).json(error)
-    })
-})
-
-app.get('/hotels', function (req, res) {
-  pool
-    .query('SELECT * FROM hotels')
-    .then((result) => res.json(result.rows))
-    .catch((error) => {
-      console.error(error)
-      res.status(500).json(error)
-    })
-})
-
-app.get('/hotels/:hotelId', (req, res) => {
-  const id = req.params.hotelId
-  pool
-    .query(`select * from hotels where id = $1`, [id])
-    .then((result) => res.json(result.rows))
-    .catch((error) => {
-      console.log(error)
-      res.status(500).json(error)
-    })
-})
-
-app.post('/hotels', (req, res) => {
-  const hotelName = req.body.name
-  const hotelRooms = req.body.rooms
-  const hotelPostcode = req.body.postcode
-
-  if (!Number.isInteger(hotelRoomshotelRooms) || hotelRooms <= 0) {
-    return res
-      .status(400)
-      .send('The number of rooms should be a positive integer.')
-  }
-  pool
-    .query(`Select * from hotels where name=$1`, [hotelName])
-    .then((result) => {
-      if (result.rows.length > 0)
-        res.status(400).send('There is a hotel with this same name!')
-      else {
-        const queryString =
-          'Insert Into hotels (name, rooms, postcode) values ($1, $2, $3)'
-        pool
-          .query(queryString, [hotelName, hotelRooms, hotelPostcode])
-          .then(() => res.send('Hotel created!'))
-          .catch((error) => {
-            console.log(error)
-            res.status(500).json(error)
-          })
-      }
     })
 })
 
