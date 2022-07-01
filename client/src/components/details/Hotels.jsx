@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import Search from './Search'
+import Sort from './Sort'
+import ModalForm from './ModalForm'
+import ModalApproved from './ModalApproved'
 import MyLoader from "./MyLoader";
 
-// import AddHotel from "./AddHotel";
-import Search from "./Search";
-import Sort from "./Sort";
-import ModalForm from "./ModalForm";
-import ModalApproved from "./ModalApproved";
 
 
 const Hotels = () => {
+
   const [hotels, setHotels] = useState([]);
   const [reload, setReload] = useState(true);
   const [allHotels, setAllHotels] = useState([]);
@@ -25,6 +25,7 @@ const Hotels = () => {
     });
   };
 
+
   // const loadData = () => {
   //   axios.get("http://localhost:3005/hotels").then((res) => {
   //     console.log(res.data)
@@ -33,22 +34,22 @@ const Hotels = () => {
   // }
 
   useEffect(() => {
-    loadData();
-  }, []);
+    loadData()
+  }, [])
 
   const deleteHandler = (id, approval) => {
-    console.log("delete", approval, id);
+    console.log('delete', approval, id)
     if (approval)
       axios
         .delete(`https://hotels-bookings.herokuapp.com/hotels/${id}`)
         .then(() => {
-          loadData();
-        });
-  };
+          loadData()
+        })
+  }
 
   useEffect(() => {
-    setReload(false);
-  }, [reload]);
+    setReload(false)
+  }, [reload])
 
   return (
     <>
@@ -68,13 +69,15 @@ const Hotels = () => {
         )}
         {hotels.map((hotel) => (
           <div key={hotel.id} className="card-row">
-            <div key={hotel.id}>
-              <h3>Hotel name:</h3>
-              <span>{hotel.name}</span>
-            </div>
-            <div>
-              <h4>Postcode: {hotel.postcode}</h4>
-              <h5>Number of rooms: {hotel.rooms}</h5>
+            <div key={hotel.id} className="d-flex-row-justify-start">
+              <div>
+                <h3>Hotel name:</h3>
+                <span>{hotel.name}</span>
+              </div>
+              <div>
+                <h4>Postcode: {hotel.postcode}</h4>
+                <h5>Number of rooms: {hotel.rooms}</h5>
+              </div>
             </div>
             <div>
               <ModalApproved deleteHandler={deleteHandler} id={hotel.id} />
@@ -83,7 +86,7 @@ const Hotels = () => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Hotels;
+export default Hotels
