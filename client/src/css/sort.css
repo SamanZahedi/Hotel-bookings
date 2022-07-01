@@ -85,6 +85,12 @@ input:checked+.slider:before {
 
 /* toggle sort end */
 
+select {
+    border: var(--second-color) solid 1px;
+    color: var(--first-color);
+    padding: 8px;
+    border-radius: 5px;
+}
 
 @media screen and (max-width:860px) {
     .asc {
