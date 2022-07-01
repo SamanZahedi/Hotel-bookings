@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Modal from "react-modal";
+
+
 const path = "https://hotels-bookings.herokuapp.com/hotels";
 
 const AddHotel = ({ allData, handleSet, loadData }) => {
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
   const [name, setName] = useState("");
   const [rooms, setRooms] = useState(0);
   const [postcode, setPostcode] = useState("");
-
-
-  const handleAdd = () => {
-    setToggle(!toggle);
-  };
+  const [showAdd, setShowAdd] = useState(false);
 
   const resetAddForm = () => {
-    setToggle(!toggle);
+    // setToggle(!toggle);
     setName("");
     setRooms(0);
     setPostcode("");
@@ -34,11 +33,11 @@ const AddHotel = ({ allData, handleSet, loadData }) => {
 
   return (
     <>
-      <button className="btn btn-add mr-auto" onClick={handleAdd}>
+      <button className="btn btn-add mr-auto" onClick={() => setShowAdd(true)}>
         Add Hotel
       </button>
       <form
-        className={toggle ? "d-flex" : "d-none"}
+        // className={toggle ? "d-flex" : "d-none"}
         onSubmit={handleSubmitEvent}
       >
         {/* <SearchYoutube searchHandler = {searchHandler}/>  */}

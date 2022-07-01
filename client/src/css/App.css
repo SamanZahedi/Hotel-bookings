@@ -96,6 +96,8 @@ main {
   color: var(--first-color);
 }
 
+
+
 .content {
   display: flex;
   flex-direction: column;
@@ -122,8 +124,14 @@ main {
   border: var(--first-color) solid;
 }
 
+/* .card-row:last-child{
+  display: flex;
+  align-self: flex-end;
+} */
+
 .card-row {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   align-items: center;
   text-align: center;
@@ -279,6 +287,20 @@ footer {
   .hamburger-menu {
     display: block;
   }
+ 
+  .btn-add{
+   position: fixed;
+   width: 52px;
+   height: 52px;
+   right: 20px;
+   bottom: 20px;
+   border-radius: 50%;
+   background-color: #fff;
+   font-size: 0;
+   color: #fff 0.1% ;
+   box-shadow: #494646 5px 5px 10px;
+   background-image: url('../assets/images/plus.svg');
+ }
 
 
 }
