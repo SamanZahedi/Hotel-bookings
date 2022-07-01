@@ -42,7 +42,7 @@ const Customers = () => {
           const imgAlt = `Customer ${customer.id} Picture`;
           return (
             <div className="card-row">
-              <img src="./person.png" alt={imgAlt} />
+              <img src="./assets/images/person.png" alt={imgAlt} />
               <div>
                 <div> Name: {customer.name}</div>
                 <div> Postcode: {customer.postcode}</div>

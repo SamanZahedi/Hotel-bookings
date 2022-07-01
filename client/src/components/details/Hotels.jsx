@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AddHotel from "./AddHotel";
+// import AddHotel from "./AddHotel";
 import Search from "./Search";
 import Sort from "./Sort";
+import ModalForm from "./ModalForm";
+import ModalApproved from "./ModalApproved";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
   const [reload, setReload] = useState(true);
   const [allHotels, setAllHotels] = useState([]);
+
+
 
   const loadData = () => {
     axios.get("https://hotels-bookings.herokuapp.com/hotels").then((res) => {
@@ -27,13 +31,14 @@ const Hotels = () => {
     loadData();
   }, []);
 
-  const deleteHandler = (id) => {
-    console.log(id);
-    axios
-      .delete(`https://hotels-bookings.herokuapp.com/hotels/${id}`)
-      .then(() => {
-        loadData();
-      });
+  const deleteHandler = (id, approval) => {
+    console.log("delete", approval, id);
+    if (approval)
+      axios
+        .delete(`https://hotels-bookings.herokuapp.com/hotels/${id}`)
+        .then(() => {
+          loadData();
+        });
   };
 
   useEffect(() => {
@@ -43,7 +48,8 @@ const Hotels = () => {
   return (
     <>
       <nav>
-        <AddHotel hotels={hotels} loadData={loadData} />
+        {/* <AddHotel hotels={hotels} loadData={loadData}/> */}
+        <ModalForm formTitle="Add Hotel" loadData={loadData} />
         <Search allData={allHotels} setData={setHotels} />
         <Sort setReload={setReload} setData={setHotels} data={hotels} />
       </nav>
@@ -59,12 +65,11 @@ const Hotels = () => {
               <h5>Number of rooms: {hotel.rooms}</h5>
             </div>
             <div>
-              <button
-                className="btn btn-danger"
-                onClick={() => deleteHandler(hotel.id)}
-              >
-                Delete
-              </button>
+              <ModalApproved          
+                 deleteHandler={deleteHandler}
+                id={hotel.id}
+              />
+              
             </div>
           </div>
         ))}
