@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import MyLoader from "./MyLoader";
+
 // import AddHotel from "./AddHotel";
 import Search from "./Search";
 import Sort from "./Sort";
 import ModalForm from "./ModalForm";
 import ModalApproved from "./ModalApproved";
 
+
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
   const [reload, setReload] = useState(true);
   const [allHotels, setAllHotels] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
 
 
@@ -17,6 +21,7 @@ const Hotels = () => {
     axios.get("https://hotels-bookings.herokuapp.com/hotels").then((res) => {
       setAllHotels(res.data);
       setHotels(res.data);
+      setIsLoading(false);
     });
   };
 
@@ -54,6 +59,13 @@ const Hotels = () => {
         <Sort setReload={setReload} setData={setHotels} data={hotels} />
       </nav>
       <div className="content">
+        {isLoading && (
+          <>
+            <MyLoader />
+            <MyLoader />
+            <MyLoader />
+          </>
+        )}
         {hotels.map((hotel) => (
           <div key={hotel.id} className="card-row">
             <div key={hotel.id}>
@@ -65,11 +77,7 @@ const Hotels = () => {
               <h5>Number of rooms: {hotel.rooms}</h5>
             </div>
             <div>
-              <ModalApproved          
-                 deleteHandler={deleteHandler}
-                id={hotel.id}
-              />
-              
+              <ModalApproved deleteHandler={deleteHandler} id={hotel.id} />
             </div>
           </div>
         ))}
